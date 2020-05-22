@@ -1,0 +1,58 @@
+<div>
+  <div *ngIf="gotError">
+    <div class="alert alert-danger" role="alert">
+      Error | {{ errorStatus }} {{ errorMessage }}
+    </div>
+  </div>
+  <div *ngIf="gotData">
+    <ul class="list-group">
+      <li class="d-flex list-group-item shadow-lg border-0">
+        <div class="align-self-center">
+          <h1>
+            {{ cityName }}
+            <span class="badge badge-secondary badge-pill">{{ countryCode }}</span>
+          </h1>
+        </div> 
+        <div class="align-self-center ml-5">
+          <h2>
+            <fa-icon [icon]="faClock"></fa-icon>
+            {{ currentTime }}
+            <span class="badge badge-primary">GMT <span *ngIf="timeZoneOffset > 0">+</span>{{ timeZoneOffset }}</span>
+          </h2>
+        </div> 
+        <div class="ml-auto">
+          <span>
+            <fa-icon style="font-size: 60px;" [ngStyle]="iconColor" [icon]="currentWeather"></fa-icon>
+          </span>
+        </div>
+      </li>
+      <li class="list-group-item shadow-lg border-0 mt-2">
+        <h2>Temperature</h2>
+        <span>
+          Min {{ tempMin }}
+          <fa-icon [ngStyle]="tempMinIconColor" [icon]="tempMinIcon"></fa-icon>
+        </span>
+        <span class="ml-5">
+          Avg {{ tempAvg }}
+          <fa-icon [ngStyle]="tempAvgIconColor" [icon]="tempAvgIcon"></fa-icon>
+        </span>
+        <span class="ml-5">
+          Max {{ tempMax }}
+          <fa-icon [ngStyle]="tempMaxIconColor" [icon]="tempMaxIcon"></fa-icon>
+        </span>
+      </li>
+      <li class="list-group-item shadow-lg border-0 mt-2">
+        <h2>Other</h2>
+        <span>
+          <fa-icon [icon]="faWind"></fa-icon><span class="ml-1">{{ windSpeed }}</span>
+        </span>
+        <span class="ml-3">
+          <fa-icon [icon]="faSortAmountDownAlt"></fa-icon><span class="ml-1">{{ pressure }}</span>
+        </span>
+        <span class="ml-3">
+          <fa-icon [icon]="faTint"></fa-icon><span class="ml-1">{{ humidity }}</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
